@@ -1,5 +1,5 @@
-import User from "../models/UserSchema";
-import generateToken from "../utils.js";
+import User from "../models/UserSchema.js";
+import { generateToken } from "../utils.js";
 import bcrypt from "bcryptjs";
 
 export const signIn = async (req, res) => {
