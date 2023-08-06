@@ -15,8 +15,8 @@ export const signIn = async (req, res) => {
       });
       return;
     }
-    res.status(401).send({ message: "Invalid username or password" });
   }
+  res.status(401).send({ message: "Invalid username or password" });
 };
 
 export const signUp = async (req, res) => {
@@ -25,8 +25,9 @@ export const signUp = async (req, res) => {
     email: req.body.email,
     password: bcrypt.hashSync(req.body.password, 10),
   });
+
   try {
-    const user = await User.newUser({});
+    const user = await newUser.save();
     res.send({
       _id: user._id,
       username: user.username,
