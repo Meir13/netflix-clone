@@ -1,23 +1,32 @@
-import { Link } from "react-router-dom";
-import Title from "../../components/shared/Title";
 import "./SignInPage.scss";
-import { useState } from "react";
-import axios from "axios";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import Title from "../../components/shared/Title";
+import { useContext, useState } from "react";
+import { loginCall } from "../../auth/authApiCalls";
+import { AuthContext } from "../../auth/authContext";
+import Loading from "../../components/shared/Loading";
 
 const SignInPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showCaptchaInfo, setShowCaptchaInfo] = useState(false);
 
-  const loginHandler = (e) => {
+  const { dispatch, isLoading } = useContext(AuthContext);
+
+  const navigate = useNavigate();
+  const search = useLocation();
+  const redirect = new URLSearchParams(search).get("redirect");
+
+  const loginHandler = async (e) => {
     e.preventDefault();
 
-    // try {
-    //   const { data } = axios.post("/users/signin", {
-    //     email: email,
-    //     password: password,
-    //   });
-    // } catch (error) {}
+    try {
+      await loginCall({ email, password }, dispatch);
+
+      navigate(redirect || "/");
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <div className="signin">
@@ -56,11 +65,13 @@ const SignInPage = () => {
               ></input>
             </p>
 
-            <button type="submit">Sign In</button>
+            <button type="submit">
+              {!isLoading ? "Sign In" : <Loading />}
+            </button>
           </form>
 
           <p className="signup">
-            new to Netflix? <Link>Sign up now</Link>
+            new to Netflix? <Link to="/signup">Sign up now</Link>
           </p>
 
           <p className="captcha">
