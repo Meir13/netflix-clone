@@ -1,7 +1,7 @@
 import "./SignInPage.scss";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Title from "../../components/shared/Title";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { loginCall } from "../../auth/authApiCalls";
 import { AuthContext } from "../../auth/authContext";
 import Loading from "../../components/shared/Loading";
@@ -10,20 +10,26 @@ const SignInPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showCaptchaInfo, setShowCaptchaInfo] = useState(false);
-
-  const { dispatch, isLoading } = useContext(AuthContext);
+  const { dispatch, isLoading, user } = useContext(AuthContext);
 
   const navigate = useNavigate();
   const search = useLocation();
   const redirect = new URLSearchParams(search).get("redirect");
+
+  useEffect(() => {
+    if (user) {
+      navigate(redirect || "/");
+    }
+  }, [user]);
 
   const loginHandler = async (e) => {
     e.preventDefault();
 
     try {
       await loginCall({ email, password }, dispatch);
-
-      navigate(redirect || "/");
+      if (user) {
+        navigate("/");
+      }
     } catch (error) {
       console.log(error);
     }

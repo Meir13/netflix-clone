@@ -4,7 +4,9 @@ import { authReducer } from "./authReducer";
 const INITIAL_STATE = {
   //move local storage actions to other function in utility functions
   user:
-    localStorage.getItem("user") !== null ? localStorage.getItem("user") : null,
+    localStorage.getItem("user") !== null
+      ? JSON.parse(localStorage.getItem("user"))
+      : null,
 
   isLoading: false,
 

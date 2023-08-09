@@ -6,7 +6,6 @@ export const loginCall = async (userCredentials, dispatch) => {
     dispatch(setLoading());
 
     const res = await axios.post("/users/signin", userCredentials);
-
     dispatch(res.data ? setUser(res.data) : setError());
   } catch (error) {
     dispatch(setError());
@@ -14,15 +13,15 @@ export const loginCall = async (userCredentials, dispatch) => {
 };
 
 export const signUpCall = async (newUser, dispatch) => {
-  console.log("signUpCall");
   dispatch(setLoading());
   try {
     const res = await axios.post("/users/signup", {
       email: newUser.email,
       password: newUser.password,
       username: newUser.username,
+      //add profile picture
+      // profilePicture: newUser.profilePicture
     });
-    console.log(res);
     dispatch(res.data ? setUser(res.data) : setError());
   } catch (error) {
     dispatch(setError());

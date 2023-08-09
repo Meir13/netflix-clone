@@ -1,13 +1,115 @@
+@import "../../../App.scss";
+
 .navbar {
   position: absolute;
   top: 0;
+
   .container {
+    position: relative;
+    width: 100vw;
     display: flex;
-    justify-content: start;
-    height: 4rem;
-    a {
+    justify-content: space-between;
+    height: 60px;
+    align-items: center;
+
+    .left {
+      display: flex;
+      margin-left: 3rem;
+      a {
+        margin-right: 3rem;
+        img {
+          height: 1.5rem;
+        }
+      }
+
+      ul {
+        display: flex;
+        padding: 0;
+        margin: 0;
+
+        li {
+          list-style-type: none;
+          margin-right: 1rem;
+        }
+
+        .icon {
+          display: none;
+        }
+
+        a {
+          color: gray;
+          margin: 0;
+          img {
+            border-radius: 4px;
+          }
+        }
+        .mobile-dropdown {
+          display: block;
+          background-color: #333;
+          position: absolute;
+          top: 4rem;
+          width: 100%;
+        }
+        @include mobile {
+          .icon {
+            display: block;
+          }
+
+          .not-first-a {
+            display: none;
+          }
+        }
+      }
+    }
+
+    .right {
+      margin-right: 3rem;
+      display: flex;
+      justify-content: space-around;
+      width: 7rem;
+      height: 50%;
+
+      .account-dropdown-container {
+        position: relative;
+
+        .account-dropdown-list {
+          position: absolute;
+          top: 100%;
+          right: 0;
+          background-color: #333;
+          list-style-type: none;
+          padding: 0;
+          margin: 0;
+          border-radius: 4px;
+          box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+          width: max-content;
+
+          li {
+            margin: 0;
+            padding: 1rem;
+            button {
+              color: white;
+              font-size: 0.8rem;
+              outline: none;
+              border: none;
+              background-color: transparent;
+
+              &:hover {
+                outline: none;
+                border: none;
+                text-decoration: underline;
+              }
+            }
+          }
+        }
+      }
+
       img {
-        height: 1.5rem;
+        height: 100%;
+      }
+
+      a {
+        color: white;
       }
     }
   }

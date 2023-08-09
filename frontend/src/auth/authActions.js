@@ -6,4 +6,4 @@ export const LOGOUT = "LOGOUT";
 export const setLoading = () => ({ type: SET_LOADING });
 export const setUser = (user) => ({ type: SET_USER, user: user });
 export const setError = () => ({ type: SET_ERROR });
-export const logout = () => ({ type: LOGOUT });
+export const signOut = () => ({ type: LOGOUT });

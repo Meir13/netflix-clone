@@ -28,6 +28,7 @@ const SignUpPage = () => {
       navigate("/");
     }
   }, [user]);
+
   return (
     <div className="register">
       <Title title={"Sign Up"} />
