@@ -1,0 +1,14 @@
+.navbar {
+  position: absolute;
+  top: 0;
+  .container {
+    display: flex;
+    justify-content: start;
+    height: 4rem;
+    a {
+      img {
+        height: 1.5rem;
+      }
+    }
+  }
+}
