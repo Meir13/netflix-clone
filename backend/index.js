@@ -3,7 +3,8 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import { seedRoutes } from "./routes/seedRoutes.js";
-import userRoutes from "./routes/userRoutes.js";
+import { userRoutes } from "./routes/userRoutes.js";
+import { contentRoutes } from "./routes/contentRoutes.js";
 
 dotenv.config();
 
@@ -17,6 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/seed", seedRoutes);
 app.use("/api/users", userRoutes);
+app.use("/api/content", contentRoutes);
 
 mongoose
   .connect(process.env.MONGO_DB_URI)

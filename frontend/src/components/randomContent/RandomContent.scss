@@ -1,0 +1,57 @@
+.random-content {
+  position: relative;
+  background-color: transparent;
+  height: 80vh;
+  top: 0;
+  width: 100%;
+
+  .random-pic {
+    height: 100%;
+    width: 100%;
+    max-width: 100%;
+    object-fit: cover;
+  }
+
+  .info-container {
+    position: absolute;
+    top: 0;
+    width: 36%;
+    margin-left: 3rem;
+    max-width: 60vw;
+    margin-top: 7rem;
+
+    img {
+      max-width: 100%;
+    }
+
+    .description {
+      font-size: 1.2vw;
+    }
+    .random-content-buttons {
+      display: flex;
+
+      button {
+        display: flex;
+        justify-content: center;
+        max-width: 10vw;
+        white-space: nowrap;
+
+        span {
+          font-size: 1.2vw;
+          margin-left: 3px;
+        }
+      }
+
+      .play-button {
+        background-color: #fff;
+        color: black;
+      }
+
+      .more-info {
+        background-color: rgba(109, 109, 110, 0.7);
+        color: white;
+        margin-left: 1rem;
+      }
+    }
+  }
+}
