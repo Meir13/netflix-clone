@@ -17,6 +17,7 @@ const NavBar = () => {
   const { dispatch } = useContext(AuthContext);
   const [showDropDown, setShowDropDown] = useState(false);
   const [showLogOut, setShowLogOut] = useState(false);
+  const [background, setBackground] = useState("");
 
   const toggleDropdown = () => {
     setShowDropDown(!showDropDown);
@@ -27,11 +28,19 @@ const NavBar = () => {
   };
 
   const signOutHandler = () => {
+    console.log("");
     dispatch(signOut());
   };
 
+  window.onscroll = () => {
+    if (window.scrollY > 0) {
+      setBackground("black");
+    } else {
+      setBackground("transparent");
+    }
+  };
   return (
-    <nav className="navbar">
+    <nav className={`navbar ${background}`}>
       <div className="container">
         <div className="left">
           <Link to="/">

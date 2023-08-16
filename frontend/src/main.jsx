@@ -4,16 +4,16 @@ import App from "./App.jsx";
 import "./index.scss";
 import { HelmetProvider } from "react-helmet-async";
 import axios from "axios";
-import { AuthContextProvider } from "./auth/authContext.jsx";
+import { AuthContextProvider } from "./auth/AuthContext.jsx";
 
 axios.defaults.baseURL = "http://localhost:5001/api";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <AuthContextProvider>
-    <React.StrictMode>
+  <React.StrictMode>
+    <AuthContextProvider>
       <HelmetProvider>
         <App />
       </HelmetProvider>
-    </React.StrictMode>
-  </AuthContextProvider>
+    </AuthContextProvider>
+  </React.StrictMode>
 );

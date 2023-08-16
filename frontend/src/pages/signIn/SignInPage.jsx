@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Title from "../../components/shared/Title";
 import { useContext, useEffect, useState } from "react";
 import { loginCall } from "../../auth/authApiCalls";
-import { AuthContext } from "../../auth/authContext";
+import { AuthContext } from "../../auth/AuthContext";
 import Loading from "../../components/shared/Loading";
 
 const SignInPage = () => {

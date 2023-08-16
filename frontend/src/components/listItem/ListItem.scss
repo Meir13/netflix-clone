@@ -1,0 +1,11 @@
+.list-item {
+  margin: 3vw 0;
+
+  img {
+    width: 10rem;
+
+    &.image-title {
+      position: absolute;
+    }
+  }
+}
