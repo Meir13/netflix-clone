@@ -12,6 +12,14 @@ function App() {
           <main>
             <Routes>
               <Route path="/" element={<HomePage />}></Route>
+              <Route
+                path="/movies"
+                element={<HomePage type={"movies"} />}
+              ></Route>
+              <Route
+                path="/series"
+                element={<HomePage type={"series"} />}
+              ></Route>
               <Route path="/signin" element={<SignInPage />}></Route>
               <Route path="/signup" element={<SignUpPage />}></Route>
             </Routes>

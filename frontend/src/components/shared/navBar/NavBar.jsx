@@ -28,7 +28,6 @@ const NavBar = () => {
   };
 
   const signOutHandler = () => {
-    console.log("");
     dispatch(signOut());
   };
 

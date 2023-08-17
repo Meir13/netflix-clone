@@ -20,3 +20,13 @@ export const getAllLists = async (req, res) => {
     res.status(500).send("An error occurred while fetching lists.");
   }
 };
+
+export const getRandomContent = async (req, res) => {
+  try {
+    const randomContent = await Content.aggregate([{ $sample: { size: 1 } }]);
+    res.status(200).send(randomContent[0]);
+  } catch (error) {
+    console.error("Error fetching random content:", error);
+    res.status(500).send("An error occurred while fetching random content.");
+  }
+};

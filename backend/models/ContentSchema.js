@@ -7,6 +7,7 @@ const ContentSchema = mongoose.Schema(
     img: { type: String, required: true },
     imgTitle: { type: String, required: true },
     imgVertical: { type: String, required: true },
+    imgThumb: { type: String, required: true },
     trailer: { type: String, required: true },
     movie: { type: String, required: true },
     duration: { type: String, required: true },
