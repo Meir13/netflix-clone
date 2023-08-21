@@ -12,8 +12,16 @@ export const getAllContent = async (req, res) => {
 };
 
 export const getAllLists = async (req, res) => {
+  const queryType = req.query.type;
+  let lists = [];
   try {
-    const lists = await List.find().populate("content").exec();
+    // const lists = await List.find().populate("content").exec();
+    if (queryType) {
+      lists = await List.aggregate([{ $match: { type: queryType } }]);
+      lists = await List.populate(lists, "content");
+    } else {
+      lists = await List.find().populate("content").exec();
+    }
     res.send(lists);
   } catch (error) {
     console.error("Error fetching lists:", error);

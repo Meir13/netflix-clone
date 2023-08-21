@@ -23,14 +23,14 @@ const HomePage = ({ type }) => {
     }
     try {
       const getContent = async () => {
-        await contentCall(dispatch);
+        await contentCall(dispatch, type);
       };
 
       getContent();
     } catch (error) {
       console.error(error);
     }
-  }, [user]);
+  }, [user, navigate]);
 
   return (
     <div className="home">

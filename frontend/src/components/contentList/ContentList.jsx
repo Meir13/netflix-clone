@@ -42,7 +42,9 @@ export const ContentList = ({ list }) => {
   return (
     <div className="content-lists-container">
       <h2>{list.title}</h2>
+
       <Carousel
+        className="carousel"
         swipeable={false}
         draggable={true}
         responsive={responsive}
@@ -50,6 +52,7 @@ export const ContentList = ({ list }) => {
         keyBoardControl={true}
         containerClass="carousel-container"
         arrow={false}
+        itemClass="carousel-item"
       >
         {list.content.map((item, i) => (
           <ListItem item={item} key={i}></ListItem>

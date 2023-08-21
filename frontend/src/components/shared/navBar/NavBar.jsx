@@ -10,7 +10,7 @@ import { AuthContext } from "../../../auth/AuthContext";
 const HEADER_ITEMS = [
   { title: "Home", path: "/" },
   { title: "Movies", path: "/movies" },
-  { title: "TV Shows", path: "/tv-shows" },
+  { title: "TV Shows", path: "/series" },
 ];
 
 const NavBar = () => {
