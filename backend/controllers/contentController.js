@@ -38,3 +38,13 @@ export const getRandomContent = async (req, res) => {
     res.status(500).send("An error occurred while fetching random content.");
   }
 };
+
+export const getItemById = async (req, res) => {
+  try {
+    const item = await Content.findById(req.params._id);
+    res.status(200).send(item);
+  } catch (error) {
+    console.error("Error fetching item details:" + error);
+    res.status(500).send("An error occurred while fetching item details.");
+  }
+};

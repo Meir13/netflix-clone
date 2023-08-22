@@ -3,9 +3,11 @@ import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const RandomContent = ({ type }) => {
   const [content, setContent] = useState({});
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getRandomContent = async () => {
@@ -51,7 +53,10 @@ const RandomContent = ({ type }) => {
                 <PlayArrowIcon /> <span>{"  "} Play</span>
               </button>
 
-              <button className="more-info">
+              <button
+                className="more-info"
+                onClick={() => navigate("/info/" + content._id)}
+              >
                 <InfoOutlinedIcon /> <span>{"  "} More Info</span>
               </button>
             </div>

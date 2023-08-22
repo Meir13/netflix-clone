@@ -19,3 +19,18 @@ export const contentCall = async (dispatch, type) => {
     console.log("content:" + error);
   }
 };
+
+export const ItemInfoCall = async (id) => {
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  try {
+    const res = await axios.get(`/content/${id}`, {
+      headers: {
+        authorization: user.token,
+      },
+    });
+    return res.data;
+  } catch (error) {
+    console.error("failed to get item info " + error);
+  }
+};

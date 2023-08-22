@@ -1,7 +1,6 @@
 import "./HomePage.scss";
 import { useContext, useEffect, useReducer, useState } from "react";
 import Title from "../../components/shared/Title";
-import NavBar from "../../components/shared/navBar/NavBar";
 import { AuthContext } from "../../auth/AuthContext";
 import { useNavigate } from "react-router-dom";
 import RandomContent from "../../components/randomContent/RandomContent";
@@ -35,8 +34,6 @@ const HomePage = ({ type }) => {
   return (
     <div className="home">
       <Title title="Home"></Title>
-
-      <NavBar />
 
       <RandomContent type={type}></RandomContent>
 

@@ -1,0 +1,33 @@
+.info-page {
+  margin-top: auto;
+
+  .details {
+    display: flex;
+    margin: 3vw;
+    margin-top: 10vh;
+
+    img {
+      height: 80vh;
+    }
+
+    .info {
+      margin: 0 2vw;
+      color: white;
+
+      h1 {
+        font-size: 2em;
+      }
+
+      button {
+        display: flex;
+        background-color: white;
+        color: black;
+        border-radius: 4px;
+
+        span {
+          font-weight: 800;
+        }
+      }
+    }
+  }
+}
