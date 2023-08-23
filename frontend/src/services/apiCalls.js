@@ -20,7 +20,7 @@ export const contentCall = async (dispatch, type) => {
   }
 };
 
-export const ItemInfoCall = async (id) => {
+export const itemInfoCall = async (id) => {
   const user = JSON.parse(localStorage.getItem("user"));
 
   try {

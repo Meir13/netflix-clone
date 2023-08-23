@@ -26,7 +26,7 @@ const responsive = {
   },
   desktop: {
     breakpoint: { max: 1200, min: 900 },
-    items: 3,
+    items: 4,
   },
   tablet: {
     breakpoint: { max: 900, min: 370 },
@@ -45,14 +45,22 @@ export const ContentList = ({ list }) => {
 
       <Carousel
         className="carousel"
-        swipeable={false}
-        draggable={true}
-        responsive={responsive}
-        infinite={true}
-        keyBoardControl={true}
-        containerClass="carousel-container"
-        arrow={false}
         itemClass="carousel-item"
+        swipeable={false}
+        draggable={false}
+        showDots={false}
+        responsive={responsive}
+        ssr={true} // means to render carousel on server-side.
+        infinite={true}
+        autoPlay={false}
+        autoPlaySpeed={10000}
+        keyBoardControl={true}
+        customTransition="all .5"
+        transitionDuration={500}
+        containerClass="carousel-container"
+        removeArrowOnDeviceType={[]}
+        dotListClass="custom-dot-list-style"
+        itemClass="carousel-item-padding-40-px"
       >
         {list.content.map((item, i) => (
           <ListItem item={item} key={i}></ListItem>

@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import "./InfoPage.scss";
 import { useNavigate, useParams } from "react-router-dom";
-import { ItemInfoCall } from "../../services/apiCalls";
+import { itemInfoCall } from "../../services/apiCalls";
 import { AuthContext } from "../../auth/AuthContext";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import Title from "../../components/shared/Title";
@@ -19,7 +19,7 @@ export const InfoPage = () => {
     }
 
     const getItemInfo = async () => {
-      const itemInfo = await ItemInfoCall(_id);
+      const itemInfo = await itemInfoCall(_id);
       setItem(itemInfo);
     };
 
