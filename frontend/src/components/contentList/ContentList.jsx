@@ -50,17 +50,16 @@ export const ContentList = ({ list }) => {
         draggable={false}
         showDots={false}
         responsive={responsive}
-        ssr={true} // means to render carousel on server-side.
+        // ssr={true} // means to render carousel on server-side.
         infinite={true}
-        autoPlay={false}
-        autoPlaySpeed={10000}
+        // autoPlay={false}
+        // autoPlaySpeed={10000}
         keyBoardControl={true}
         customTransition="all .5"
         transitionDuration={500}
         containerClass="carousel-container"
         removeArrowOnDeviceType={[]}
         dotListClass="custom-dot-list-style"
-        itemClass="carousel-item-padding-40-px"
       >
         {list.content.map((item, i) => (
           <ListItem item={item} key={i}></ListItem>
