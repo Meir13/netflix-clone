@@ -38,3 +38,31 @@ export const signUp = async (req, res) => {
     res.send({ message: "Error creating user" });
   }
 };
+
+export const addToFavorites = async (req, res) => {
+  const userId = req.user._id;
+  const contentId = req.body.contentId;
+
+  try {
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.status(404).send({ message: "User not found" });
+    }
+
+    const index = user.favoritesList.indexOf(contentId);
+    if (index === -1) {
+      await user.favoritesList.push(contentId);
+    } else {
+      await user.favoritesList.splice(index, 1);
+    }
+
+    await user.save();
+    await user.populate("favoritesList");
+    res
+      .status(200)
+      .send({ title: "My favorites", content: user.favoritesList });
+  } catch (error) {
+    res.status(500).send({ message: "" + error.message });
+  }
+};

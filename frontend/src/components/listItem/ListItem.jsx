@@ -1,44 +1,89 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "./ListItem.scss";
 import ReactPlayer from "react-player";
 import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
 import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
 import ThumbDownOutlinedIcon from "@mui/icons-material/ThumbDownOutlined";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import { useNavigate } from "react-router-dom";
+import { addContentToFavorites } from "../../services/apiCalls";
+import { AuthContext } from "../../auth/AuthContext";
+import { UPDATE_FAVORITES } from "../../auth/authActions";
 
 export const ListItem = ({ item }) => {
   const [isHover, setIsHover] = useState(false);
+
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+
   const navigate = useNavigate();
+
+  const { userFavorites, dispatch } = useContext(AuthContext);
+
+  const isFavor = userFavorites.content.some((i) => i._id === item._id);
+
+  const handelAddToFavorites = async () => {
+    try {
+      const data = await addContentToFavorites(item._id);
+      dispatch({ type: UPDATE_FAVORITES, userFavorites: data });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <>
       <div
-        className="list-item"
+        className={`list-item`}
         onMouseEnter={() => setIsHover(true)}
         onMouseLeave={() => setIsHover(false)}
       >
-        <div className="contents">
+        <div
+          className={`contents`}
+          onMouseLeave={() => setIsVideoLoaded(false)}
+        >
           <img src={item.imgThumb} alt={item.img}></img>
 
           {isHover && (
             <>
-              <ReactPlayer
-                className="video"
-                width={300}
-                height={145}
-                url={item.trailer}
-                playing={false}
-                style={{ color: "transparent" }}
-              />
+              <div className="video-container">
+                {!isVideoLoaded && (
+                  <img src={item.imgThumb} className="video-preview"></img>
+                )}
+
+                <ReactPlayer
+                  className="video"
+                  width={300}
+                  height={145}
+                  url={item.trailer}
+                  muted={true}
+                  playing={true}
+                  onReady={() => setIsVideoLoaded(true)}
+                />
+              </div>
 
               <div className="itemInfo">
                 <div className="icons">
                   <div>
-                    <PlayArrowIcon className="icon" />
+                    <PlayArrowIcon
+                      className="icon"
+                      onClick={() => navigate("/watch/" + item._id)}
+                    />
 
-                    <AddIcon className="icon" />
+                    {isFavor && (
+                      <RemoveIcon
+                        className="icon"
+                        onClick={() => handelAddToFavorites()}
+                      />
+                    )}
+
+                    {!isFavor && (
+                      <AddIcon
+                        className="icon"
+                        onClick={() => handelAddToFavorites()}
+                      />
+                    )}
 
                     <ThumbUpOutlinedIcon className="icon" />
 
@@ -68,43 +113,5 @@ export const ListItem = ({ item }) => {
         </div>
       </div>
     </>
-
-    //my
-    // <div
-    //   className="list-item"
-    //   onMouseEnter={() => setIsHover(true)}
-    //   onMouseLeave={() => setIsHover(false)}
-    // >
-    //   <img src={item.imgThumb} alt={item.img}></img>
-
-    //   <div className="player-container">
-    //     {isHover && (
-    //       <>
-    //         <ReactPlayer
-    //           className="player"
-    //           width={300}
-    //           height={175}
-    //           url={item.trailer}
-    //           // light={item.imgThumb}
-    //           playing={false}
-    //         />
-
-    //         <div className="content-buttons">
-    //           <div>
-    //             <PlayArrowIcon className="like" />
-
-    //             <AddIcon className="like" />
-
-    //             <ThumbUpOutlinedIcon className="like" />
-
-    //             <ThumbDownAltIcon className="like" />
-    //           </div>
-
-    //           <ExpandMoreIcon className="like" />
-    //         </div>
-    //       </>
-    //     )}
-    //   </div>
-    // </div>
   );
 };

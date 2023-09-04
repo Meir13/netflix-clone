@@ -7,10 +7,14 @@ const INITIAL_STATE = {
     localStorage.getItem("user") !== null
       ? JSON.parse(localStorage.getItem("user"))
       : null,
+  userFavorites:
+    localStorage.getItem("userFavorites") !== null
+      ? JSON.parse(localStorage.getItem("userFavorites"))
+      : null,
 
   isLoading: false,
 
-  error: false,
+  error: "",
 };
 
 export const AuthContext = createContext(INITIAL_STATE);
@@ -21,7 +25,11 @@ export const AuthContextProvider = ({ children }) => {
 
   useEffect(() => {
     localStorage.setItem("user", JSON.stringify(loginState.user));
-  }, [loginState.user]);
+    localStorage.setItem(
+      "userFavorites",
+      JSON.stringify(loginState.userFavorites)
+    );
+  }, [loginState.user, loginState.userFavorites]);
 
   return (
     <AuthContext.Provider
@@ -29,6 +37,7 @@ export const AuthContextProvider = ({ children }) => {
         user: loginState.user,
         isLoading: loginState.isLoading,
         error: loginState.error,
+        userFavorites: loginState.userFavorites,
         dispatch,
       }}
     >
