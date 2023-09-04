@@ -8,6 +8,8 @@ import { useNavigate } from "react-router-dom";
 const RandomContent = ({ type }) => {
   const [content, setContent] = useState({});
   const navigate = useNavigate();
+  const width = window.innerWidth;
+  const image = width > 915 ? content.img : content.imgVertical;
 
   useEffect(() => {
     const getRandomContent = async () => {
@@ -37,14 +39,12 @@ const RandomContent = ({ type }) => {
     <div className="random-content">
       {content && (
         <>
-          <img
-            className="random-pic"
-            src={content.img}
-            alt={content.title}
-          ></img>
+          <img className="random-pic" src={image} alt={content.title}></img>
 
           <div className="info-container">
-            <img src={content.imgTitle} alt={content.title}></img>
+            {width > 918 && (
+              <img src={content.imgTitle} alt={content.title}></img>
+            )}
 
             <p className="description">{content.description}</p>
 
