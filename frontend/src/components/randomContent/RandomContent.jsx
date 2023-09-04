@@ -48,17 +48,17 @@ const RandomContent = ({ type }) => {
 
             <p className="description">{content.description}</p>
 
-            <div
-              className="random-content-buttons"
-              onClick={() => navigate("/watch/" + content._id)}
-            >
-              <button className="play-button">
+            <div className="random-content-buttons">
+              <button
+                className="play-button"
+                onClick={() => navigate("/watch/" + content._id)}
+              >
                 <PlayArrowIcon /> <span>{"  "} Play</span>
               </button>
 
               <button
                 className="more-info"
-                onClick={() => navigate("/info/" + content._id)}
+                onClick={() => navigate(`/info/${content._id}`)}
               >
                 <InfoOutlinedIcon /> <span>{"  "} More Info</span>
               </button>

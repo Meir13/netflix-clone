@@ -3,7 +3,7 @@
 .navbar {
   position: fixed;
   top: 0;
-  z-index: 99;
+  z-index: 1001;
 
   &.black {
     background-color: #0b0b0b;
@@ -20,16 +20,24 @@
     align-items: center;
 
     .left {
+      @include mobile {
+        width: 100%;
+        justify-content: space-between;
+        margin-left: 1rem;
+      }
       display: flex;
       margin-left: 3rem;
       a {
-        margin-right: 3rem;
+        margin-right: 1rem;
         img {
           height: 1.5rem;
         }
       }
 
       ul {
+        @include mobile {
+          display: none;
+        }
         display: flex;
         padding: 0;
         margin: 0;
@@ -70,13 +78,19 @@
     }
 
     .right {
+      @include mobile {
+        margin-right: 1rem;
+      }
       margin-right: 3rem;
       display: flex;
       justify-content: space-around;
-      width: 7rem;
+      width: fit-content;
       height: 50%;
 
       .account-dropdown-container {
+        @include mobile {
+          display: none;
+        }
         position: relative;
 
         .account-dropdown-list {
@@ -113,6 +127,7 @@
 
       img {
         height: 100%;
+        border-radius: 5px;
       }
 
       a {
