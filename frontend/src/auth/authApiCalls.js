@@ -8,7 +8,7 @@ export const loginCall = async (userCredentials, dispatch) => {
     const res = await axios.post("/users/signin", userCredentials);
     dispatch(res.data ? setUser(res.data) : setError());
   } catch (error) {
-    dispatch(setError());
+    dispatch(setError(error.response.data.message));
   }
 };
 

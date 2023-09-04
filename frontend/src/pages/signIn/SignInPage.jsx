@@ -10,7 +10,7 @@ const SignInPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showCaptchaInfo, setShowCaptchaInfo] = useState(false);
-  const { dispatch, isLoading, user } = useContext(AuthContext);
+  const { dispatch, isLoading, user, error } = useContext(AuthContext);
 
   const navigate = useNavigate();
   const search = useLocation();
@@ -20,7 +20,7 @@ const SignInPage = () => {
     if (user) {
       navigate(redirect || "/");
     }
-  }, [user]);
+  }, [user, error]);
 
   const loginHandler = async (e) => {
     e.preventDefault();
@@ -49,6 +49,8 @@ const SignInPage = () => {
       <div className="login-container">
         <div className="login-inner-container">
           <h1>Sign In</h1>
+
+          {error && <p className="invalid-cred">{error}</p>}
 
           <form onSubmit={loginHandler}>
             <p>

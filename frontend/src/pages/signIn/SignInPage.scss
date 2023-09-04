@@ -43,6 +43,12 @@
       display: flex;
       flex-direction: column;
 
+      .invalid-cred {
+        background-color: #e87c03;
+        color: #fff;
+        padding: 5px;
+      }
+
       h1 {
         font-size: 32px;
       }
