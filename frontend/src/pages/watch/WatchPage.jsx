@@ -28,7 +28,7 @@ export const WatchPage = () => {
 
   return (
     <div className="watch-page">
-      <Link to="/">
+      <Link to="javascript:history.go(-1)">
         <ArrowBackIcon fontSize="large" />
       </Link>
 

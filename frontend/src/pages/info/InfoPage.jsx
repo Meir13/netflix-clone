@@ -44,7 +44,7 @@ export const InfoPage = () => {
               <p>Age restriction: {item.limit}+</p>
               <p>Genre: {item.genre}</p>
 
-              <button>
+              <button onClick={() => navigate(`/watch/${item._id}`)}>
                 {<PlayArrowIcon />} <span>play</span>
               </button>
             </div>
