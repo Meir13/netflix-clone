@@ -1,11 +1,10 @@
 import axios from "axios";
 
-export const contentCall = async (ContentType) => {
+export const contentCall = async (contentType) => {
   const user = JSON.parse(localStorage.getItem("user"));
-
   try {
     const res = await axios.get(`/content/lists`, {
-      params: { type: ContentType },
+      params: { type: contentType },
       headers: {
         authorization: user.token,
       },

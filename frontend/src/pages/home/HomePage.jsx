@@ -10,7 +10,7 @@ import { ContentList } from "../../components/contentList/ContentList";
 import { GET_FAIL, GET_REQUEST, GET_SUCCESS } from "../../services/actionTypes";
 import { LOGOUT, UPDATE_FAVORITES } from "../../auth/authActions";
 
-const HomePage = ({ ContentType }) => {
+const HomePage = ({ contentType }) => {
   const {
     user,
     dispatch: authDispatch,
@@ -32,7 +32,7 @@ const HomePage = ({ ContentType }) => {
 
     try {
       const getContent = async () => {
-        const res = await contentCall(ContentType);
+        const res = await contentCall(contentType);
 
         if (res.message) {
           dispatch({ type: GET_FAIL, payload: res.message });
@@ -56,10 +56,10 @@ const HomePage = ({ ContentType }) => {
 
       console.error(error);
     }
-  }, [user]);
+  }, [user, contentType]);
 
   let title = "";
-  switch (ContentType) {
+  switch (contentType) {
     case "movies":
       title = "Movies";
       break;
@@ -74,7 +74,7 @@ const HomePage = ({ ContentType }) => {
     <div className="home">
       <Title title={title}></Title>
 
-      <RandomContent type={ContentType}></RandomContent>
+      <RandomContent type={contentType}></RandomContent>
 
       {userFavorites && userFavorites.content[0] && (
         <ContentList list={userFavorites}></ContentList>

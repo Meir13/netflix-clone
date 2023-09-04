@@ -19,11 +19,11 @@ function App() {
                 <Route path="/" element={<HomePage />}></Route>
                 <Route
                   path="/movies"
-                  element={<HomePage ContentType={"movies"} />}
+                  element={<HomePage contentType={"movies"} />}
                 ></Route>
                 <Route
                   path="/series"
-                  element={<HomePage ContentType={"series"} />}
+                  element={<HomePage contentType={"series"} />}
                 ></Route>
                 <Route path="/info/:_id" element={<InfoPage />}></Route>
                 <Route path="/search" element={<SearchPage />}></Route>
