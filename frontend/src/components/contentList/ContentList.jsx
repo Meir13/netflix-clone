@@ -10,7 +10,7 @@ const responsive = {
   },
   superLargeDesktop4: {
     breakpoint: { max: 2100, min: 1875 },
-    items: 7,
+    items: 8,
   },
   superLargeDesktop3: {
     breakpoint: { max: 1875, min: 1650 },
@@ -46,8 +46,8 @@ export const ContentList = ({ list }) => {
       <Carousel
         className="carousel"
         itemClass="carousel-item"
-        swipeable={false}
-        draggable={false}
+        swipeable={true}
+        draggable={true}
         showDots={false}
         responsive={responsive}
         // ssr={true} // means to render carousel on server-side.

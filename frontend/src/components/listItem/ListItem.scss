@@ -5,26 +5,41 @@
   background-color: black;
   margin-right: 5px;
   overflow: hidden;
+  border-radius: 4px;
+
   cursor: pointer;
   .contents {
     background-color: black;
+    border-radius: 4px;
     img {
       width: 225px;
       height: 100%;
       object-fit: cover;
+      border-bottom: 5px;
     }
-    .video {
-      position: absolute;
-      top: 0;
-      left: 0;
+    .video-container {
+      height: fit-content;
+      width: 2px;
+      .video {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      .video-preview {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        height: 145px;
+      }
     }
     &:hover {
       z-index: 1;
       width: 300px;
       height: 300px;
       position: absolute;
-      top: -180px;
-      left: -70px;
+      top: -90px;
+      left: -35px;
       -webkit-box-shadow: 0px 0px 15px 0px rgba(255, 255, 255, 0.07);
       box-shadow: 0px 0px 15px 0px rgba(255, 255, 255, 0.07);
       border-radius: 5px;
@@ -43,7 +58,6 @@
           justify-content: space-between;
           margin-bottom: 10px;
           .icon {
-            position: relative;
             border: 2px solid grey;
             padding: 5px;
             border-radius: 50%;

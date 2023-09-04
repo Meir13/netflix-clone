@@ -8,8 +8,13 @@
   }
 
   .carousel {
-    margin-top: 25px;
+    margin-top: 15px;
+    margin-bottom: 40px;
     overflow: visible;
+    &:hover {
+      position: relative;
+      z-index: 2;
+    }
 
     .carousel-item {
       // display: flex;
@@ -18,6 +23,11 @@
       flex: 0 0 auto;
       width: 100%; /* or any fixed width */
       transform: translateX(calc(50% - 50px));
+
+      &:hover {
+        position: absolute;
+        z-index: 2;
+      }
     }
 
     .item:hover {

@@ -13,6 +13,7 @@ export const homeReducer = (state, { type, payload }) => {
     case GET_SUCCESS:
       return { ...state, content: payload, isLoading: false };
     case GET_FAIL:
+      console.info(payload);
       return { ...state, error: payload, isLoading: false };
     default:
       return state;
