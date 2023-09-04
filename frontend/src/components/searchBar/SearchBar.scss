@@ -1,0 +1,23 @@
+@import "../../App.scss";
+
+.search-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+
+  .icon {
+    position: absolute;
+    margin-top: 8px;
+  }
+
+  input {
+    @include mobile {
+      height: 3vh;
+    }
+
+    padding-left: 1.8rem;
+    height: 2rem;
+    background-color: black;
+  }
+}

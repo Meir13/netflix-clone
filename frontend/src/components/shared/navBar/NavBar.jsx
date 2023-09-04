@@ -6,6 +6,7 @@ import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import { useContext, useState } from "react";
 import { signOut } from "../../../auth/authActions";
 import { AuthContext } from "../../../auth/AuthContext";
+import { SearchBAr } from "../../searchBar/SearchBAr";
 
 const HEADER_ITEMS = [
   { title: "Home", path: "/" },
@@ -18,6 +19,7 @@ const NavBar = () => {
   const [showDropDown, setShowDropDown] = useState(false);
   const [showLogOut, setShowLogOut] = useState(false);
   const [background, setBackground] = useState("");
+  const [isInSearch, setIsInSearch] = useState(false);
 
   const toggleDropdown = () => {
     setShowDropDown(!showDropDown);
@@ -53,24 +55,31 @@ const NavBar = () => {
                   <Link to={item.path}>{item.title}</Link>
                 </li>
               ))}
-              <li className="icon" onClick={toggleDropdown}>
-                <MenuIcon />
-              </li>
             </ul>
           }
         </div>
 
         <div className="right">
-          <Link>
-            <SearchIcon />
-          </Link>
+          <div onBlur={() => setIsInSearch(false)}>
+            {isInSearch && <SearchBAr />}
+          </div>
+
+          {!isInSearch && (
+            <Link onClick={() => setIsInSearch(true)}>
+              <SearchIcon />
+            </Link>
+          )}
+
+          {/* <div className="icon" onClick={toggleDropdown}>
+            <MenuIcon />
+          </div> */}
 
           <Link
             className="account-dropdown-container"
             onMouseEnter={toggleShowLogOut}
             onMouseLeave={toggleShowLogOut}
           >
-            <img src="https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250"></img>
+            <img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/1bdc9a33850498.56ba69ac2ba5b.png"></img>
             <ArrowDropDownIcon />
 
             {showLogOut && (

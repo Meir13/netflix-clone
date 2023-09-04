@@ -6,6 +6,7 @@ import HomePage from "./pages/home/HomePage";
 import { Layout } from "./components/layout/Layout";
 import { InfoPage } from "./pages/info/InfoPage";
 import { WatchPage } from "./pages/watch/WatchPage";
+import { SearchPage } from "./pages/search/SearchPage";
 
 function App() {
   return (
@@ -18,13 +19,14 @@ function App() {
                 <Route path="/" element={<HomePage />}></Route>
                 <Route
                   path="/movies"
-                  element={<HomePage type={"movies"} />}
+                  element={<HomePage ContentType={"movies"} />}
                 ></Route>
                 <Route
                   path="/series"
-                  element={<HomePage type={"series"} />}
+                  element={<HomePage ContentType={"series"} />}
                 ></Route>
                 <Route path="/info/:_id" element={<InfoPage />}></Route>
+                <Route path="/search" element={<SearchPage />}></Route>
               </Route>
               <Route path="/watch/:_id" element={<WatchPage />}></Route>
               <Route path="/signin" element={<SignInPage />}></Route>
