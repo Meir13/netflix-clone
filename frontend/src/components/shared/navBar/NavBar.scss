@@ -20,22 +20,38 @@
     align-items: center;
 
     .left {
+      display: flex;
+      margin-left: 3rem;
+
+      @include tablet {
+        margin-top: 0.5rem;
+        height: 2.5rem;
+      }
       @include mobile {
         width: 100%;
         justify-content: space-between;
         margin-left: 1rem;
       }
-      display: flex;
-      margin-left: 3rem;
       a {
         margin-right: 1rem;
+
         img {
           height: 1.5rem;
+
+          @include tablet {
+            margin-top: 0.5rem;
+            height: 2.5rem;
+          }
+
+          @include mobile {
+            margin-top: 0;
+            height: 1.5rem;
+          }
         }
       }
 
       ul {
-        @include mobile {
+        @include tablet {
           display: none;
         }
         display: flex;
@@ -45,6 +61,11 @@
         li {
           list-style-type: none;
           margin-right: 1rem;
+
+          @include tablet {
+            margin-top: 0.5rem;
+            font-size: 1.9rem;
+          }
         }
 
         .icon {
@@ -57,13 +78,6 @@
           img {
             border-radius: 4px;
           }
-        }
-        .mobile-dropdown {
-          display: block;
-          background-color: #333;
-          position: absolute;
-          top: 4rem;
-          width: 100%;
         }
         @include mobile {
           .icon {
@@ -78,17 +92,33 @@
     }
 
     .right {
-      @include mobile {
-        margin-right: 1rem;
-      }
       margin-right: 3rem;
       display: flex;
       justify-content: space-around;
       width: fit-content;
       height: 50%;
 
+      @include tablet {
+        height: 100%;
+        margin-top: 2rem;
+        align-items: center;
+
+        .icon {
+          font-size: 3rem;
+        }
+      }
+      @include mobile {
+        margin-right: 1rem;
+        align-items: center;
+        margin-top: 0;
+
+        .icon {
+          font-size: 1.5rem;
+        }
+      }
+
       .account-dropdown-container {
-        @include mobile {
+        @include tablet {
           display: none;
         }
         position: relative;

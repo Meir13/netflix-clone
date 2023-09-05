@@ -26,9 +26,9 @@ export const SearchBAr = () => {
 
   return (
     <div className="search-bar">
-      <div className="icon">
-        <SearchIcon />
-      </div>
+      {/* <div className="icon"> */}
+      <SearchIcon className="icon" />
+      {/* </div> */}
 
       <input
         type="text"

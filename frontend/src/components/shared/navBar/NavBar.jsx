@@ -1,12 +1,12 @@
 import "./NavBar.scss";
 import { Link } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
-import MenuIcon from "@mui/icons-material/Menu";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { signOut } from "../../../auth/authActions";
 import { AuthContext } from "../../../auth/AuthContext";
 import { SearchBAr } from "../../searchBar/SearchBAr";
+import { MobileNavBar } from "./mobileNavBar/MobileNavBar";
 
 const HEADER_ITEMS = [
   { title: "Home", path: "/" },
@@ -16,14 +16,12 @@ const HEADER_ITEMS = [
 
 const NavBar = () => {
   const { dispatch } = useContext(AuthContext);
-  const [showDropDown, setShowDropDown] = useState(false);
   const [showLogOut, setShowLogOut] = useState(false);
   const [background, setBackground] = useState("");
   const [isInSearch, setIsInSearch] = useState(false);
+  const [windowDimension, setWindowDimension] = useState(window.innerWidth);
 
-  const toggleDropdown = () => {
-    setShowDropDown(!showDropDown);
-  };
+  const isMobile = windowDimension <= 915;
 
   const toggleShowLogOut = () => {
     setShowLogOut(!showLogOut);
@@ -40,6 +38,16 @@ const NavBar = () => {
       setBackground("transparent");
     }
   };
+
+  useEffect(() => {
+    function handelResize() {
+      setWindowDimension(window.innerWidth);
+    }
+
+    window.addEventListener("resize", handelResize);
+    return () => window.removeEventListener("resize", handelResize);
+  }, []);
+
   return (
     <nav className={`navbar ${background}`}>
       <div className="container">
@@ -66,13 +74,11 @@ const NavBar = () => {
 
           {!isInSearch && (
             <Link onClick={() => setIsInSearch(true)}>
-              <SearchIcon />
+              <SearchIcon className="icon" />
             </Link>
           )}
 
-          {/* <div className="icon" onClick={toggleDropdown}>
-            <MenuIcon />
-          </div> */}
+          {isMobile && <MobileNavBar navbarItems={HEADER_ITEMS}></MobileNavBar>}
 
           <Link
             className="account-dropdown-container"
@@ -80,7 +86,7 @@ const NavBar = () => {
             onMouseLeave={toggleShowLogOut}
           >
             <img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/1bdc9a33850498.56ba69ac2ba5b.png"></img>
-            <ArrowDropDownIcon />
+            <ArrowDropDownIcon className="icon" />
 
             {showLogOut && (
               <ul className="account-dropdown-list">
