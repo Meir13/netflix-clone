@@ -5,21 +5,23 @@
     background-color: #0b0b0b;
     position: absolute;
     top: 0;
-    right: 0;
+    right: -100%;
     display: flex;
     flex-direction: column;
     align-items: end;
     margin: 0;
     padding: 8px;
     height: 100vh;
-    width: 0px;
-    transition: width 1000ms;
+    width: fit-content;
+    @include tablet {
+      width: 11rem;
+    }
+    @include mobile {
+      width: fit-content;
+    }
 
     &.open {
-      width: fit-content;
-      @include tablet {
-        width: 11rem;
-      }
+      animation: slide-in 0.3s forwards;
     }
 
     li {
@@ -34,10 +36,23 @@
         }
       }
     }
+
+    .sign-out {
+      color: red !important;
+    }
   }
   .icon {
     @include tablet {
       font-size: 2rem;
+    }
+  }
+
+  @keyframes slide-in {
+    0% {
+      right: -100%;
+    }
+    100% {
+      right: 0;
     }
   }
 }
