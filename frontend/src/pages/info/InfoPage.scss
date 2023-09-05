@@ -1,3 +1,5 @@
+@import "../../App.scss";
+
 .info-page {
   margin-top: auto;
 
@@ -5,6 +7,9 @@
     display: flex;
     margin: 3vw;
     margin-top: 10vh;
+    @include tablet {
+      flex-direction: column;
+    }
 
     img {
       height: 80vh;
@@ -18,11 +23,27 @@
         font-size: 2em;
       }
 
+      p {
+        @include tablet {
+          font-size: 1.5rem;
+        }
+        @include mobile {
+          font-size: 1rem;
+        }
+      }
+
       button {
         display: flex;
         background-color: white;
         color: black;
         border-radius: 4px;
+        align-items: center;
+        @include tablet {
+          font-size: 1.5rem;
+        }
+        @include mobile {
+          font-size: 1rem;
+        }
 
         span {
           font-weight: 800;

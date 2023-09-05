@@ -22,19 +22,19 @@ const responsive = {
   },
   superLargeDesktop: {
     breakpoint: { max: 1425, min: 1200 },
-    items: 4,
+    items: 5,
   },
   desktop: {
     breakpoint: { max: 1200, min: 900 },
-    items: 4,
+    items: 5,
   },
   tablet: {
     breakpoint: { max: 900, min: 370 },
-    items: 2,
+    items: 4,
   },
   mobile: {
-    breakpoint: { max: 370, min: 0 },
-    items: 1,
+    breakpoint: { max: 380, min: 0 },
+    items: 2,
   },
 };
 

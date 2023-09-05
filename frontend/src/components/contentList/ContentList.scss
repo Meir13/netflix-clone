@@ -1,3 +1,5 @@
+@import "../../App.scss";
+
 .content-lists-container {
   width: 100%;
   h2 {
@@ -5,6 +7,10 @@
     font-size: 1.4vw;
     margin: 0;
     margin-left: 3vw;
+
+    @include tablet {
+      font-size: 4vw;
+    }
   }
 
   .carousel {

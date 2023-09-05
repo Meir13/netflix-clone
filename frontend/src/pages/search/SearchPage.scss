@@ -1,13 +1,29 @@
+@import "../../App.scss";
+
 .search-page {
   margin-top: 20vh;
   margin-left: 3vw;
   margin-right: 3vw;
+  @include tablet {
+    margin-top: 15vh;
+  }
+  @include mobile {
+    margin-top: 20vh;
+  }
 
   .container {
     display: flex;
     flex-wrap: wrap;
     row-gap: 6vh;
     column-gap: 3px;
+    padding-bottom: 7vh;
+    @include mobile {
+      justify-content: center;
+    }
+
+    @include tablet {
+      padding-left: 5vw;
+    }
 
     .item-container {
       position: relative;
