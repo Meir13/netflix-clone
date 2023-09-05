@@ -12,7 +12,6 @@ export const SearchPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const query = String(searchParams.get("q"));
   const navigate = useNavigate();
-
   const { user } = useContext(AuthContext);
 
   const [{ isLoading, error, content }, dispatch] = useReducer(
@@ -50,6 +49,19 @@ export const SearchPage = () => {
                 <ListItem item={item}></ListItem>
               </div>
             ))}
+
+          {content.length === 0 && !isLoading && (
+            <div className="no-content-found">
+              <p>Your search {query} did not have any matches.</p>
+              <p>Suggestions</p>
+              <ul>
+                <li>Try different keywords</li>
+                <li>Looking for a movie or TV show?</li>
+                <li>Try using a movie, TV show title, an actor or director</li>
+                <li>Try a genre, like comedy, romance, sports, or drama</li>
+              </ul>
+            </div>
+          )}
         </div>
       </div>
     </div>
