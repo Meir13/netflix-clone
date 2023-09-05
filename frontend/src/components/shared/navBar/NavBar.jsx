@@ -78,7 +78,12 @@ const NavBar = () => {
             </Link>
           )}
 
-          {isMobile && <MobileNavBar navbarItems={HEADER_ITEMS}></MobileNavBar>}
+          {isMobile && (
+            <MobileNavBar
+              navbarItems={HEADER_ITEMS}
+              signOut={signOutHandler}
+            ></MobileNavBar>
+          )}
 
           <Link
             className="account-dropdown-container"

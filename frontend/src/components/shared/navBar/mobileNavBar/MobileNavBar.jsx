@@ -4,7 +4,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import { useState } from "react";
 import "./MobileNavBar.scss";
 
-export const MobileNavBar = ({ navbarItems }) => {
+export const MobileNavBar = ({ navbarItems, signOut }) => {
   const [showDropDown, setShowDropDown] = useState(false);
 
   const toggleDropdown = () => {
@@ -18,7 +18,7 @@ export const MobileNavBar = ({ navbarItems }) => {
       </div>
 
       {showDropDown && (
-        <ul className={`mobile-dropdown ${showDropDown ? "open" : ""}`}>
+        <ul className={`mobile-dropdown ${showDropDown ? "open" : "close"}`}>
           <li>
             <div onClick={toggleDropdown}>
               <CloseIcon className="icon" />
@@ -31,6 +31,11 @@ export const MobileNavBar = ({ navbarItems }) => {
               </Link>
             </li>
           ))}
+          <li>
+            <Link onClick={() => signOut()} className="sign-out">
+              Sign out{" "}
+            </Link>
+          </li>
         </ul>
       )}
     </div>
