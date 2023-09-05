@@ -9,6 +9,7 @@ import { contentCall } from "../../services/apiCalls";
 import { ContentList } from "../../components/contentList/ContentList";
 import { GET_FAIL, GET_REQUEST, GET_SUCCESS } from "../../services/actionTypes";
 import { LOGOUT, UPDATE_FAVORITES } from "../../auth/authActions";
+import { TailSpin } from "react-loader-spinner";
 
 const HomePage = ({ contentType }) => {
   const {
@@ -80,11 +81,19 @@ const HomePage = ({ contentType }) => {
         <ContentList list={userFavorites}></ContentList>
       )}
 
-      <div>
-        {lists.map((list, i) => (
-          <ContentList list={list} key={i}></ContentList>
-        ))}
-      </div>
+      {isLoading && (
+        <div className="spinner">
+          <TailSpin color="red"></TailSpin>
+        </div>
+      )}
+
+      {!isLoading && (
+        <div>
+          {lists.map((list, i) => (
+            <ContentList list={list} key={i}></ContentList>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

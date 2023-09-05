@@ -1,5 +1,10 @@
 .home {
   overflow: hidden;
   background-color: #141414;
-  margin-bottom: 10vh;
+  padding-bottom: 10vh;
+
+  .spinner {
+    display: flex;
+    justify-content: center;
+  }
 }
