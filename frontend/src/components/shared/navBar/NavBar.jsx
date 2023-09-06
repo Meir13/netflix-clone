@@ -5,7 +5,7 @@ import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import { useContext, useEffect, useState } from "react";
 import { signOut } from "../../../auth/authActions";
 import { AuthContext } from "../../../auth/AuthContext";
-import { SearchBAr } from "../../searchBar/SearchBAr";
+import { SearchBar } from "../../searchBar/SearchBar";
 import { MobileNavBar } from "./mobileNavBar/MobileNavBar";
 
 const HEADER_ITEMS = [
@@ -69,7 +69,7 @@ const NavBar = () => {
 
         <div className="right">
           <div onBlur={() => setIsInSearch(false)}>
-            {isInSearch && <SearchBAr />}
+            {isInSearch && <SearchBar />}
           </div>
 
           {!isInSearch && (

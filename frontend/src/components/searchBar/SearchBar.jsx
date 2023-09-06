@@ -4,7 +4,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import { useEffect, useState } from "react";
 import { getFilterUrl } from "../../services/filterUrl";
 
-export const SearchBAr = () => {
+export const SearchBar = () => {
   const navigate = useNavigate();
   const [query, setQuery] = useState("");
   const { pathname } = useLocation();
