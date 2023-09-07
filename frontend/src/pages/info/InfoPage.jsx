@@ -24,7 +24,7 @@ export const InfoPage = () => {
     };
 
     getItemInfo();
-  }, []);
+  }, [user]);
 
   return (
     <>
