@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import { useState } from "react";
@@ -6,6 +6,8 @@ import "./MobileNavBar.scss";
 
 export const MobileNavBar = ({ navbarItems, signOut }) => {
   const [showDropDown, setShowDropDown] = useState(false);
+
+  const { pathname } = useLocation();
 
   const toggleDropdown = () => {
     setShowDropDown(!showDropDown);
@@ -26,7 +28,11 @@ export const MobileNavBar = ({ navbarItems, signOut }) => {
           </li>
           {navbarItems.map((item) => (
             <li key={item.title}>
-              <Link to={item.path} onClick={toggleDropdown}>
+              <Link
+                to={item.path}
+                onClick={toggleDropdown}
+                className={item.path === pathname ? "active" : ""}
+              >
                 {item.title}
               </Link>
             </li>

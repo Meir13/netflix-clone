@@ -1,5 +1,5 @@
 import "./NavBar.scss";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import { useContext, useEffect, useState } from "react";
@@ -21,6 +21,7 @@ const NavBar = () => {
   const [isInSearch, setIsInSearch] = useState(false);
   const [windowDimension, setWindowDimension] = useState(window.innerWidth);
 
+  let { pathname } = useLocation();
   const isMobile = windowDimension <= 915;
 
   const toggleShowLogOut = () => {
@@ -58,8 +59,11 @@ const NavBar = () => {
 
           {
             <ul>
-              {HEADER_ITEMS.map((item, i) => (
-                <li key={item.title} className={i !== 0 ? "not-first-a" : ""}>
+              {HEADER_ITEMS.map((item) => (
+                <li
+                  key={item.title}
+                  className={pathname === item.path ? "active" : ""}
+                >
                   <Link to={item.path}>{item.title}</Link>
                 </li>
               ))}

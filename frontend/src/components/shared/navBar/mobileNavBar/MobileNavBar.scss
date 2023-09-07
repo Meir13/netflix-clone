@@ -28,6 +28,11 @@
       list-style-type: none;
 
       a {
+        color: gray !important;
+
+        &.active {
+          color: white !important;
+        }
         @include tablet {
           font-size: 2rem;
         }
