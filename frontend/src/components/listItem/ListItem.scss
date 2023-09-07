@@ -43,6 +43,7 @@ a {
     .video-container {
       height: fit-content;
       width: 2px;
+
       .video {
         position: absolute;
         top: 0;
@@ -66,7 +67,6 @@ a {
         left: -35px;
         -webkit-box-shadow: 0px 0px 15px 0px rgba(255, 255, 255, 0.07);
         box-shadow: 0px 0px 15px 0px rgba(255, 255, 255, 0.07);
-        border-radius: 5px;
 
         img {
           width: 300px;

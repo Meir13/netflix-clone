@@ -33,7 +33,7 @@ const RandomContent = ({ type }) => {
     }, 4000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [type]);
 
   return (
     <div className="random-content">
