@@ -11,9 +11,22 @@
       flex-direction: column;
     }
 
-    img {
-      height: cover;
-      max-height: 80vh;
+    .img-container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      img {
+        max-height: 80vh;
+        @include tablet {
+          object-fit: cover;
+          width: 85vw;
+        }
+        @include mobile {
+          object-fit: cover;
+          width: auto;
+          max-width: 100%;
+        }
+      }
     }
 
     .info {
@@ -39,6 +52,8 @@
         color: black;
         border-radius: 4px;
         align-items: center;
+        justify-content: center;
+        width: 100%;
         @include tablet {
           font-size: 1.5rem;
         }
@@ -49,6 +64,16 @@
         span {
           font-weight: 800;
         }
+      }
+
+      .icons-container {
+        // background-color: black;
+        margin-top: 1rem;
+        border-radius: 4px;
+        // padding: 14px 0 0 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
     }
   }
