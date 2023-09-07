@@ -21,6 +21,9 @@
       position: relative;
       z-index: 2;
     }
+    @include mobile {
+      margin-bottom: 20px;
+    }
 
     .carousel-item {
       // display: flex;
