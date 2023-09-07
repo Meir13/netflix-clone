@@ -30,7 +30,7 @@ const responsive = {
   },
   tablet: {
     breakpoint: { max: 900, min: 370 },
-    items: 4,
+    items: 3,
   },
   biggerMobile: {
     breakpoint: { max: 480, min: 0 },
@@ -54,10 +54,7 @@ export const ContentList = ({ list }) => {
         draggable={true}
         showDots={false}
         responsive={responsive}
-        // ssr={true} // means to render carousel on server-side.
         infinite={true}
-        // autoPlay={false}
-        // autoPlaySpeed={10000}
         keyBoardControl={true}
         customTransition="all .5"
         transitionDuration={500}
