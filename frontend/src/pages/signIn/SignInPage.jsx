@@ -78,6 +78,12 @@ const SignInPage = () => {
             </button>
           </form>
 
+          <h5>Meir Chechik demo project</h5>
+
+          <p className="no-margin">email: admin@example.com</p>
+
+          <p className="no-margin">password: 12345</p>
+
           <p className="signup">
             new to Netflix? <Link to="/signup">Sign up now</Link>
           </p>
