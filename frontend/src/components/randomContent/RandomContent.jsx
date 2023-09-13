@@ -4,6 +4,7 @@ import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { TailSpin } from "react-loader-spinner";
 
 const RandomContent = ({ type }) => {
   const [content, setContent] = useState({});
@@ -37,7 +38,11 @@ const RandomContent = ({ type }) => {
 
   return (
     <div className="random-content">
-      {content && (
+      <div className="spinner">
+        {!content.title && <TailSpin color="red"></TailSpin>}
+      </div>
+
+      {content.title && (
         <>
           <img className="random-pic" src={image} alt={content.title}></img>
 
