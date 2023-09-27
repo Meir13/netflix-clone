@@ -6,7 +6,7 @@ import { HelmetProvider } from "react-helmet-async";
 import axios from "axios";
 import { AuthContextProvider } from "./auth/AuthContext.jsx";
 
-axios.defaults.baseURL = import.meta.env.VITE_API_ROUTE
+axios.defaults.baseURL = import.meta.env.VITE_API_ROUTE //remove s
   ? import.meta.env.VITE_API_ROUTE
   : "http://localhost:5001/api";
 

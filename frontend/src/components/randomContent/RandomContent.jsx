@@ -52,22 +52,26 @@ const RandomContent = ({ type }) => {
             )}
 
             <p className="description">{content.description}</p>
+          </div>
 
-            <div className="random-content-buttons">
-              <button
-                className="play-button"
-                onClick={() => navigate("/watch/" + content._id)}
-              >
-                <PlayArrowIcon /> <span>{"  "} Play</span>
-              </button>
+          <div className="random-content-buttons">
+            <button
+              className="play-button"
+              onClick={() => navigate("/watch/" + content._id)}
+            >
+              <PlayArrowIcon /> <span>{"  "} Play</span>
+            </button>
 
-              <button
-                className="more-info"
-                onClick={() => navigate(`/info/${content._id}`)}
-              >
-                <InfoOutlinedIcon /> <span>{"  "} More Info</span>
-              </button>
-            </div>
+            <button
+              className="more-info"
+              onClick={() => navigate(`/info/${content._id}`)}
+            >
+              <InfoOutlinedIcon /> <span>{"  "} More Info</span>
+            </button>
+          </div>
+
+          <div className="maturity-rating-container">
+            <span className="maturity-rating">{content.limit}+</span>
           </div>
         </>
       )}
